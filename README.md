@@ -1,3 +1,10 @@
+#next steps
+deploy on streamlit
+host the program on ibm linux one
+clean and make the code efficient
+add more analysis asd per the sports analytics course
+
+
 # visualizing-an-nba-database
 Leveraged Pandas and Matplotlib to execute data visualization tasks using a comprehensive NBA database comprising over
 two million rows of advanced statistics and box scores from the 2022/23 season. Allows user to pass input and returns a graph/chart/

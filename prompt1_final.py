@@ -43,6 +43,6 @@ def topKLeader(category,K):
     plt.ylabel(category)
     plt.show()
 
-#par1= input('what category leaders do you need?')
-#par2=int(input('how many leader do you need'))
-#topKLeader(par1, par2)
+par1= input('what category leaders do you need?')
+par2=int(input('how many leader do you need'))
+topKLeader(par1, par2)
