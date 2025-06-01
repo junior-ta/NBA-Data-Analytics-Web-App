@@ -1,7 +1,7 @@
 #next steps
 deploy on streamlit
-host the program on ibm linux one
 clean and make the code efficient
+host the program on ibm linux one
 add more analysis asd per the sports analytics course
 
 
