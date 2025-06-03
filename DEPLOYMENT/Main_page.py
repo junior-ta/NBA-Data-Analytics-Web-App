@@ -37,7 +37,7 @@ with col2:
     st.page_link("Project's_stack.py", label="Project's stack", icon=":material/layers:")
 
 with col3:
-    st.page_link("links-master/links.py", label="Info and Contacts", icon=":material/contacts:")
+    st.page_link("Links/links.py", label="Info and Contacts", icon=":material/contacts:")
 
 
 #Data prompts
