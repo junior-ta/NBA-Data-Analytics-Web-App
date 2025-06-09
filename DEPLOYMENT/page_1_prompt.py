@@ -2,10 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#Heading
-st.title('Displaying the top K leaders in a particular stat category using a bar chart')
 
-#Getting the data from basketball reference
+#Getting the data from the database
 def extract_data():
     traditional = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\basic.csv")
     advanced = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\advanced.csv")
@@ -14,18 +12,12 @@ def extract_data():
     df_advanced = advanced.drop(['gameid', 'home', 'team', 'playerid', 'name', 'SEC'], axis=1)
     df_stats= pd.concat([df_traditional,df_advanced], axis=1)
     return df_stats
-df_stats= extract_data()
-
-
-#getting user input
-stats= st.selectbox('Stats',df_stats.drop(['name'], axis= 1).columns)
-playercount= st.number_input('How many players do you need?',1)
 
 
 #process the data
-def prepare_data():
-    playerNames= df_stats['name'].unique()
-    dfTemp= df_stats.set_index('name')
+def prepare_data(data):
+    playerNames= data['name'].unique()
+    dfTemp= data.set_index('name')
 
     # Iterating the players and finding their average stats for the season
     eligiblePlayersList = []
@@ -55,11 +47,6 @@ def prepare_data():
     playersAvg.insert(0, 'Player', eligiblePlayersList)
 
     return  playersAvg
-playersAvg= prepare_data()
-
-#spacing
-for i in range(3):
-    st.markdown("")
 
 #showing the top leaders graphically
 def topKLeader(category,K):
@@ -79,5 +66,25 @@ def topKLeader(category,K):
 
     st.pyplot(plt)  # Instead of plt.show()
 
-topKLeader(stats,playercount)
+if __name__ == "__main__":
+
+    # Heading
+    st.title('Displaying the top K leaders in a particular stat category using a bar chart')
+
+    #extracting the data
+    df_stats = extract_data()
+
+    # getting user input
+    stats = st.selectbox('Stats', df_stats.drop(['name'], axis=1).columns)
+    playercount = st.number_input('How many players do you need?', 1)
+
+    #Data preparation
+    playersAvg = prepare_data(df_stats)
+
+    # spacing
+    for i in range(3):
+        st.markdown("")
+
+    #plotting the bar chart
+    topKLeader(stats,playercount)
 

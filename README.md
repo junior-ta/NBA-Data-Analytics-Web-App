@@ -6,6 +6,10 @@ add more analysis asd per the sports analytics course
 
 
 # visualizing-an-nba-database
+
+Input: A database of individual (each player represents a row) and collective stats for all the NBA games 2022/23 season. 
+Datasets include: Basic stats, Advanced stats, Defense, Hustle, Matchups, Usage, Tracking...
+
 Leveraged Pandas and Matplotlib to execute data visualization tasks using a comprehensive NBA database comprising over
 two million rows of advanced statistics and box scores from the 2022/23 season. Allows user to pass input and returns a graph/chart/
 visual to satisfy the prompt. For example: Showing the top K leaders in a particular statistic, graphing a linear chart showing

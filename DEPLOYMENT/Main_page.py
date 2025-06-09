@@ -42,29 +42,29 @@ with col3:
 
 #Data prompts
 st.subheader('Data extraction and visualization', divider="grey")
-p1, p2, p3, p4 = st.columns(4)
-p5, p6, p7 = st.columns(3)
+p1, p2, p3 = st.columns(3)
+p4, p5, p6 = st.columns(3)
 
 with p1:
-    st.page_link("page_1_prompt.py", label="prompt 1")
+    st.page_link("page_1_prompt.py", label="Top K leaders bar chart")
 
 with p2:
-    st.page_link("page_2_prompt.py", label="prompt 2")
+    st.page_link("page_2_prompt.py", label="Leader's stats")
 
 with p3:
-    st.page_link("page_3_prompt.py", label="prompt 3")
+    st.page_link("page_3_prompt.py", label="Top teams")
 
 with p4:
-    st.page_link("page_4_prompt.py", label="prompt 4")
+    st.page_link("page_4_prompt.py", label="Team's offense")
 
 with p5:
-    st.page_link("page_5_prompt.py", label="prompt 5")
+    st.page_link("page_5_prompt.py", label="Individual performances")
 
 with p6:
-    st.page_link("page_6_prompt.py", label="prompt 6")
+    st.page_link("page_6_prompt.py", label="Pace")
 
-with p7:
-    st.page_link("page_7_prompt.py", label="prompt 7")
+
+st.page_link("page_7_prompt.py", label="Player's matchups")
 
 
 #Analytics
