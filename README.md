@@ -1,8 +1,13 @@
 #next steps
-deploy on streamlit
-clean and make the code efficient
-host the program on ibm linux one
-add more analysis asd per the sports analytics course
+1. deploy on streamlit
+
+2. clean the directory and find a way to deploy through github for employers to see
+
+3. analyze runtime and make the code efficient
+
+4. host the program on ibm linux one?
+
+5. more analysis asd per the sports analytics course
 
 
 # visualizing-an-nba-database
