@@ -69,7 +69,10 @@ st.page_link("page_7_prompt.py", label="Player's matchups")
 
 #Analytics
 st.subheader('Analytics', divider="gray")
-#PE = st.columns(1)
+PE, PP = st.columns(2)
 
-#with PE:
-st.page_link("page_8_pythagoreanExpectation.py", label="Pythagorean Expectation",)
+with PE:
+    st.page_link("page_8_pythagoreanExpectation.py", label="Pythagorean Expectation")
+
+with PP:
+    st.page_link("page_9_pythagoreanPrediction.py", label="Pythagorean Prediction")

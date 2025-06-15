@@ -22,7 +22,8 @@ pages= {
                                          st.Page("page_5_prompt.py", title="prompt 5"),
                                          st.Page("page_6_prompt.py", title="prompt 6"),
                                          st.Page("page_7_prompt.py", title="prompt 7")],
-    "Analytics":[st.Page("page_8_pythagoreanExpectation.py", title="Pythagorean Expectation")]
+    "Analytics":[st.Page("page_8_pythagoreanExpectation.py", title="Pythagorean Expectation"),
+                 st.Page("page_9_pythagoreanPrediction.py", title="Pythagorean Prediction")]
 }
 
 
