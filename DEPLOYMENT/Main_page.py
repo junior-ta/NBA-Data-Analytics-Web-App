@@ -31,13 +31,13 @@ import streamlit as st
 col1, col3, col2 = st.columns(3)
 
 with col1:
-    st.page_link("Who_am_I.py", label="Who am I?", icon=":material/person:")
+    st.page_link("deployment/Who_am_I.py", label="Who am I?", icon=":material/person:")
 
 with col2:
-    st.page_link("Project's_stack.py", label="Project's stack", icon=":material/layers:")
+    st.page_link("deployment/Project's_stack.py", label="Project's stack", icon=":material/layers:")
 
 with col3:
-    st.page_link("Links/links.py", label="Info and Contacts", icon=":material/contacts:")
+    st.page_link("deployment/Links/links.py", label="Info and Contacts", icon=":material/contacts:")
 
 
 #Data prompts
@@ -46,25 +46,25 @@ p1, p2, p3 = st.columns(3)
 p4, p5, p6 = st.columns(3)
 
 with p1:
-    st.page_link("page_1_prompt.py", label="Top K leaders bar chart")
+    st.page_link("deployment/page_1_prompt.py", label="Top K leaders bar chart")
 
 with p2:
-    st.page_link("page_2_prompt.py", label="Leader's stats")
+    st.page_link("deployment/page_2_prompt.py", label="Leader's stats")
 
 with p3:
-    st.page_link("page_3_prompt.py", label="Top teams")
+    st.page_link("deployment/page_3_prompt.py", label="Top teams")
 
 with p4:
-    st.page_link("page_4_prompt.py", label="Team's offense")
+    st.page_link("deployment/page_4_prompt.py", label="Team's offense")
 
 with p5:
-    st.page_link("page_5_prompt.py", label="Individual performances")
+    st.page_link("deployment/page_5_prompt.py", label="Individual performances")
 
 with p6:
-    st.page_link("page_6_prompt.py", label="Pace")
+    st.page_link("deployment/page_6_prompt.py", label="Pace")
 
 
-st.page_link("page_7_prompt.py", label="Player's matchups")
+st.page_link("deployment/page_7_prompt.py", label="Player's matchups")
 
 
 #Analytics
@@ -72,7 +72,7 @@ st.subheader('Analytics', divider="gray")
 PE, PP = st.columns(2)
 
 with PE:
-    st.page_link("page_8_pythagoreanExpectation.py", label="Pythagorean Expectation")
+    st.page_link("deployment/page_8_pythagoreanExpectation.py", label="Pythagorean Expectation")
 
 with PP:
-    st.page_link("page_9_pythagoreanPrediction.py", label="Pythagorean Prediction")
+    st.page_link("deployment/page_9_pythagoreanPrediction.py", label="Pythagorean Prediction")
