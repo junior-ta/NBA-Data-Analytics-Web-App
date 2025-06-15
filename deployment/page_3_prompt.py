@@ -3,7 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 import streamlit as st
 
-dataGames = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\games.csv")
+dataGames = pd.read_csv(r"database/games.csv")
 
 #Getting the data from basketball reference
 def extract_prepare_data(data):

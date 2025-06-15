@@ -3,7 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 import streamlit as st
 
-teamsAdvanced=pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\team_advanced.csv")
+teamsAdvanced=pd.read_csv(r"database/team_advanced.csv")
 
 def process_data(data):
     # finding the length of the season (in terms of number of games played) and dividing it into 4 equal splits

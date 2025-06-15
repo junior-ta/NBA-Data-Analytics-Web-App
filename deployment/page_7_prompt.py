@@ -5,7 +5,7 @@ import streamlit as st
 
 @st.cache_data
 def process_data():
-    data = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\matchups.csv")
+    data = pd.read_csv(r"database/matchups.csv")
 
     # create an empty dataframe with the desired columns
     df = pd.DataFrame(columns=['name', 'matchup', 'time', 'pts'])

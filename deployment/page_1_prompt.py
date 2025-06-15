@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 #Getting the data from the database
 def extract_data():
-    traditional = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\basic.csv")
-    advanced = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\advanced.csv")
+    traditional = pd.read_csv(r"database/basic.csv")
+    advanced = pd.read_csv(r"database/advanced.csv")
 
     df_traditional = traditional.drop(['gameid', 'home', 'team', 'playerid'], axis=1)
     df_advanced = advanced.drop(['gameid', 'home', 'team', 'playerid', 'name', 'SEC'], axis=1)

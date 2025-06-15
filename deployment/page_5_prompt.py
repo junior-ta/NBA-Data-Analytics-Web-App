@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 
-traditional = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\basic.csv")
-advanced = pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\advanced.csv")
+traditional = pd.read_csv(r"database/basic.csv")
+advanced = pd.read_csv(r"database/advanced.csv")
 
 #Getting the data from the database
 def extract_process_data():

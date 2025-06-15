@@ -6,7 +6,7 @@ import seaborn as sns
 import statsmodels.formula.api as smf
 import streamlit as st
 
-gamesData=pd.read_csv(r"C:\Users\ttjrb\OneDrive\Desktop\University Important\summer 2024 work\projects\databases\ALL 1320 nba games 2022-23\games.csv")
+gamesData=pd.read_csv(r"database/games.csv")
 
 def preparing_data(data):
     data = data[['home', 'away', 'h_pts', 'a_pts', 'date']]
