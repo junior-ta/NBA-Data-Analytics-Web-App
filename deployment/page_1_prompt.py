@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 
 #Getting the data from the database
+
+@st.cache_data
 def extract_data():
     traditional = pd.read_csv(r"database/basic.csv")
     advanced = pd.read_csv(r"database/advanced.csv")
@@ -16,6 +18,9 @@ def extract_data():
 
 #process the data
 def prepare_data(data):
+
+    playersAvg= data.groupby("name").mean.reset_index()
+
     playerNames= data['name'].unique()
     dfTemp= data.set_index('name')
 
