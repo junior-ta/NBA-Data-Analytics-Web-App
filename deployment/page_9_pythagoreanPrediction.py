@@ -3,9 +3,10 @@ import numpy as np
 import seaborn as sns
 import streamlit as st
 
-gamesData=pd.read_csv(r"database/games.csv")
+@st.cache_data
+def preparing_data():
+    data = pd.read_csv(r"database/games.csv")
 
-def preparing_data(data):
     data = data[['home', 'away', 'h_pts', 'a_pts', 'date']]
     data = data.rename(columns={'home': 'h_team', 'away': 'a_team'})
 
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     # Heading
     st.title('Using Pythagorean Prediction to predict the second half of the season in 2022/23')
 
-    predictor= preparing_data(gamesData)
+    predictor= preparing_data()
 
     PE, WN = st.columns(2)
 

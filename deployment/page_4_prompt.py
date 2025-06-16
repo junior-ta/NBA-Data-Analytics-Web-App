@@ -2,16 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-dataGames = pd.read_csv(r"databases/games.csv")
 
-def extract_prepare_data(data):
+@st.cache_data
+def extract_prepare_data():
+    data = pd.read_csv(r"database/games.csv")
+
     # getting the points scored by each team for all the games of the season
-    allScores = []
-
-    for i in range(len(data['h_pts'])):
-        allScores.append(data['h_pts'].iloc[i])
-    for i in range(len(data['a_pts'])):
-        allScores.append(data['a_pts'].iloc[i])
+    allScores = data['h_pts'].tolist() + data['a_pts'].tolist()
 
     # classifying the points using given marks
     allScoresCount = {}
@@ -64,7 +61,7 @@ if __name__ == '__main__':
     # Heading
     st.title("Teams' scoring splits of the season")
 
-    allScoresCountSorted= extract_prepare_data(dataGames)
+    allScoresCountSorted= extract_prepare_data()
 
     st.dataframe(allScoresCountSorted)
 

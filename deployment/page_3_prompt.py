@@ -1,72 +1,50 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
+import numpy as np
 
-dataGames = pd.read_csv(r"database/games.csv")
+@st.cache_data
+def extract_prepare_data():
+    data = pd.read_csv(r"database/games.csv")
 
-#Getting the data from basketball reference
-def extract_prepare_data(data):
+    data = data[['home', 'away', 'h_pts', 'a_pts', 'date']]
+    data = data.rename(columns={'home': 'h_team', 'away': 'a_team'})
 
+    # adding columns to specify which team won
+    data['homeWin'] = np.where(data['h_pts'] > data['a_pts'], 1, 0)
+    data['awayWin'] = np.where(data['h_pts'] < data['a_pts'], 1, 0)
 
-    # finding out each unique team that played in the NBA
-    teams = data['home'].unique()
-    teamsRecordsList = []
+    data['count'] = 1
 
-    # iterating through every team
-    for team in teams:
-        teamRecord = {}
-        # extracting Home games results
-        df1 = data[data['home'] == team]
-        homeWin = 0
-        homeLoss = 0
-        for i in range(len(df1)):
-            if df1['h_pts'].iloc[i] > df1['a_pts'].iloc[i]:
-                homeWin += 1
-            else:
-                homeLoss += 1
+    home = data.groupby('h_team')[['homeWin', 'count']].sum()
+    home['homeLost'] = home['count'] - home['homeWin']
+    home = home.drop(['count'], axis=1).reset_index().rename(columns={'h_team': 'team'})
+    away = data.groupby('a_team')[['awayWin', 'count']].sum()
+    away['awayLost'] = away['count'] - away['awayWin']
+    away = away.drop(['count'], axis=1).reset_index().rename(columns={'a_team': 'team'})
 
-        # extracting Away games results
-        df2 = data[data['away'] == team]
-        awayWin = 0
-        awayLoss = 0
-        for i in range(len(df2)):
-            if df2['h_pts'].iloc[i] < df2['a_pts'].iloc[i]:
-                awayWin += 1
-            else:
-                awayLoss += 1
+    teamRecords = pd.merge(home, away, on="team")
+    teamRecords['totalWins'] = teamRecords['homeWin'] + teamRecords['awayWin']
+    teamRecords['totalLosts'] = teamRecords['homeLost'] + teamRecords['awayLost']
 
-        # creating the team record dictionary and adding it my final list of teams' records
-        teamRecord['name'] = team
-        teamRecord['homeWin'] = homeWin
-        teamRecord['awayWin'] = awayWin
-        teamRecord['totalWins'] = homeWin + awayWin
-        teamRecord['homeLoss'] = homeLoss
-        teamRecord['awayLoss'] = awayLoss
-        teamRecord['totalLosses'] = homeLoss + awayLoss
-
-        teamsRecordsList.append(teamRecord)
-
-    # creating a data frame with teams and their records
-    teamsRecords = pd.DataFrame(teamsRecordsList)
-
-    return  teamsRecords
+    return teamRecords
 
 if __name__ == '__main__':
     # Heading
     st.title('Teams rankings with home and away splits')
 
-    teamsRecords= extract_prepare_data(dataGames)
+    teamsRecords= extract_prepare_data()
 
     bar= st.button('Bar chart(H)', help="display team rankings as a horizontal bar chart")
     table= st.button('Table', help="display team rankings as a table of records")
 
     if table:
-        st.dataframe(teamsRecords.set_index('name').sort_values('totalWins', ascending=False), height=1085)
+        st.dataframe(teamsRecords.set_index('team').sort_values('totalWins', ascending=False), height=1085)
 
     if bar:
         topk = teamsRecords.sort_values('totalWins', ascending=False)
 
-        plt.barh(topk['name'], topk['totalWins'])
+        plt.barh(topk['team'], topk['totalWins'])
         plt.ylabel('teams')
         plt.xlabel('wins')
         plt.title('Top teams in the NBA')

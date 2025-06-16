@@ -1,6 +1,5 @@
 import streamlit as st
 from deployment.Links import st_function
-#from deployment/Links/st_function import st_button, load_css
 from PIL import Image
 
 st_function.load_css()

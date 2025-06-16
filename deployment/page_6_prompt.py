@@ -2,16 +2,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-teamsAdvanced=pd.read_csv(r"database/team_advanced.csv")
+@st.cache_data
+def process_data():
+    data = pd.read_csv(r"database/team_advanced.csv")
 
-def process_data(data):
     # finding the length of the season (in terms of number of games played) and dividing it into 4 equal splits
     n = len(data)
     split = n // 4
 
     # Creating a list containing the 4 splits data frames extracted from the entire season dataframe
-    splitn = [teamsAdvanced.iloc[:split], teamsAdvanced.iloc[split:(2 * split)],
-              teamsAdvanced.iloc[(2 * split):(3 * split)], teamsAdvanced.iloc[(3 * split):]]
+    splitn = [data.iloc[:split], data.iloc[split:(2 * split)],
+              data.iloc[(2 * split):(3 * split)], data.iloc[(3 * split):]]
 
     # creating a list of paces throughout the season for the data visualization
     paceList = []
@@ -26,7 +27,7 @@ if __name__ == '__main__':
     # Heading
     st.title('Teams pace throughout the season')
 
-    paceList = process_data(teamsAdvanced)
+    paceList = process_data()
     percentage = ["25%", "50%", "75%", "100%"]
 
     # spacing

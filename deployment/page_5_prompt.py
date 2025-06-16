@@ -1,12 +1,12 @@
 import pandas as pd
 import streamlit as st
 
-
-traditional = pd.read_csv(r"database/basic.csv")
-advanced = pd.read_csv(r"database/advanced.csv")
-
+@st.cache_data
 #Getting the data from the database
 def extract_process_data():
+    traditional = pd.read_csv(r"database/basic.csv")
+    advanced = pd.read_csv(r"database/advanced.csv")
+
     df_traditional = traditional.drop(['gameid', 'home', 'team', 'playerid'], axis=1)
     df_advanced = advanced.drop(['gameid', 'home', 'team', 'playerid', 'name', 'SEC'], axis=1)
     df_stats= pd.concat([df_traditional,df_advanced], axis=1)

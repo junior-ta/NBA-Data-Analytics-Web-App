@@ -1,14 +1,4 @@
-#import pandas as pd
-#import csv
-#import matplotlib.pyplot as plt
-import os
-import sys
 import streamlit as st
-#import base64
-#import numpy as np
-#import seaborn as sns
-#import statsmodels.formula.api as smf
-sys.path.append(os.path.join(os.path.dirname(__file__), 'Links'))
 
 pages= {
     "Homepage":[st.Page("deployment/Main_page.py", title="Main Page")],

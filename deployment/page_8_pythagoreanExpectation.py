@@ -4,9 +4,10 @@ import seaborn as sns
 import statsmodels.formula.api as smf
 import streamlit as st
 
-gamesData=pd.read_csv(r"database/games.csv")
+@st.cache_data
+def preparing_data():
+    data = pd.read_csv(r"database/games.csv")
 
-def preparing_data(data):
     data = data[['home', 'away', 'h_pts', 'a_pts', 'date']]
     data = data.rename(columns={'home': 'h_team', 'away': 'a_team'})
 
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     st.title('Pythagorean expectation of teams in 2022/23')
 
     # preparing the data
-    df = preparing_data(gamesData)
+    df = preparing_data()
 
     #calculating win% and pyth expec...
     df=pythagoreanExp_calculation(df)

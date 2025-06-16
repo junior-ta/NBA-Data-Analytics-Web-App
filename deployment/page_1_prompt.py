@@ -15,41 +15,24 @@ def extract_data():
     df_stats= pd.concat([df_traditional,df_advanced], axis=1)
     return df_stats
 
-
+@st.cache_data
 #process the data
 def prepare_data(data):
+    #dropping players who did not play during the game
+    data = data[pd.notnull(data["SEC"])]
+    data["GP"] = 1
 
-    playersAvg= data.groupby("name").mean.reset_index()
+    #finding average stats and total games played count
+    playersAvg = data.groupby("name").agg(
+        {
+            **{col: "mean" for col in data.select_dtypes(include="number").columns},
+            "GP": "count"
+        }
+    )
 
-    playerNames= data['name'].unique()
-    dfTemp= data.set_index('name')
-
-    # Iterating the players and finding their average stats for the season
-    eligiblePlayersList = []
-    statsCategoriesList = dfTemp.columns
-    resultList = []
-
-    # iterating each player
-    for player in playerNames:
-        iteration = dfTemp.loc[player]
-        # determining if he is eligible for rankings (>58 games played)
-        if len(iteration) > 58:
-            eligiblePlayersList.append(player)
-            # finding the average stats of the player
-            avg = iteration.mean()
-            playerStatsList = []
-            # appending the player's stats to his list (respective of categories and in order)
-            for i in range(len(statsCategoriesList)):
-                playerStatsList.append(avg[statsCategoriesList[i]])
-            # creating the player's dictionary for his entry in the result list, key= stat category, value= his average stats
-            playerDict = {}
-            for i in range(len(statsCategoriesList)):
-                playerDict[statsCategoriesList[i]] = playerStatsList[i]
-            resultList.append(playerDict)
-
-    # Converting the final result list of dictionaries to a dataframe and adding back the names of players who are eligible for ranking
-    playersAvg = pd.DataFrame(resultList)
-    playersAvg.insert(0, 'Player', eligiblePlayersList)
+    #making the leaders cutoff to 58 games players minimum
+    playersAvg= playersAvg[playersAvg.GP>58]
+    playersAvg = playersAvg.reset_index().rename(columns={"name": "Player"})
 
     return  playersAvg
 
