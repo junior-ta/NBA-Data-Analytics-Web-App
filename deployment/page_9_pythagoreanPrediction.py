@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import seaborn as sns
-import statsmodels.formula.api as smf
 import streamlit as st
 
 gamesData=pd.read_csv(r"database/games.csv")

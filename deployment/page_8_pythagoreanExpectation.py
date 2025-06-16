@@ -1,6 +1,4 @@
 import pandas as pd
-import csv
-import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import statsmodels.formula.api as smf

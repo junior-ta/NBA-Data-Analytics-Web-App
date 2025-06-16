@@ -1,7 +1,5 @@
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import page_1_prompt as p1
+from deployment import page_1_prompt as p1
 
 if __name__ == "__main__":
     # Heading
