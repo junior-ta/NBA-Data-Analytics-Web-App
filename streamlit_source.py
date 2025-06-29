@@ -2,9 +2,8 @@ import streamlit as st
 
 pages= {
     "Homepage":[st.Page("deployment/Main_page.py", title="Main Page")],
-    "Me":[st.Page("deployment/Who_am_I.py", title="Who am I?"),
-          st.Page("deployment/Project's_stack.py", title="Project's stack"),
-          st.Page("deployment/Links/links.py", title="Links")],
+    "Me":[st.Page("deployment/Project's_stack.py", title="Project's stack"),
+          st.Page("deployment/Links/links.py", title="Links and I")],
     "Data extraction and visualization":[st.Page("deployment/page_1_prompt.py", title="top K leaders bar chart"),
                                          st.Page("deployment/page_2_prompt.py", title="stats of the 5 NBA leaders for X category"),
                                          st.Page("deployment/page_3_prompt.py", title="prompt 3"),

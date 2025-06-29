@@ -15,7 +15,7 @@ st.title('My NBA Data Analysis Studies')
 st.markdown("""
 This app is used to show the results of my data analysis findings, my data explorer/visualizations and many more
 * **Contact me:** juniorta@buffalo.edu / ttjrbiz@gmail.com
-* **Data source:** Kaggle datasets [link will be shared later bro chill!]
+* **Data source:** Kaggle datasets: https://www.kaggle.com/datasets/szymonjwiak/nba-2022-2023-advanced-boxscores
 """)
 
 #Spacing
@@ -28,16 +28,13 @@ st.subheader('Me!!!', divider="gray")
 import streamlit as st
 
 
-col1, col3, col2 = st.columns(3)
+col1, col2 = st.columns(2)
 
 with col1:
-    st.page_link("deployment/Who_am_I.py", label="Who am I?", icon=":material/person:")
+    st.page_link("deployment/Links/links.py", label="About Me and Contacts", icon=":material/contacts:")
 
 with col2:
     st.page_link("deployment/Project's_stack.py", label="Project's stack", icon=":material/layers:")
-
-with col3:
-    st.page_link("deployment/Links/links.py", label="Info and Contacts", icon=":material/contacts:")
 
 
 #Data prompts
