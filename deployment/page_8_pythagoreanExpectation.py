@@ -86,13 +86,13 @@ if __name__ == '__main__':
 	""")
 
     st.markdown("""
-	You can see the value of Intercept is 0.0609 and coef is .8770. It's this latter value were interested in. It means that for every one unit increase in p_expectation, the value of win%  goes up by 0.887.
+(i) I observed an R-squared of 0.913, indicating a strong relationship between both variables. This means 91.3% of the variance in win_percent is explained by p_expectation
 	
-	Two other points to note:
-	
-	(i) The standard error (std err) gives us an idea of the precision of the estimate. The ratio of the coefficient (coef) to the standard error is called the t statistic (t) and its value informs us about statistical significance. This is illustrated by the p-value (P > |t|) - this is the probability that we would observe the value .8770 by chance, if the true value were really zero. This probability here is 0.000 - (this is not exactly zero, but the table doesn't include enough decimal places to show this) which means we can confident it is not zero. By convention, it is usual to conclude that we cannot be confident that the value of the coefficient is not zero if the p-value is greater than .05
-	
-	(ii) in the top right hand corner of the table is the R-squared. This statistic tells you the percentage of variation in the y-variable (win%) which can be accounted for by the variation in the x variables (p_expectation). R-squared can be thought of as a percentage - here the Pythagorean Expectation can account for 89.4% of the variation in win percentage.
+(ii) You can see the value of Intercept is -2.8414 and coef is 6.6794. It's this latter value were interested in (Because having a p_expectation of 0 will be crazy!). It means that for every 1 unit increase in p_expectation, the win percentage increases by 6.68 percentage points (on average).
+
+(iii) The standard error (std err) gives us an idea of the precision of the estimate: 0.389 is solid.
+	 
+    The ratio of the coefficient (coef) to the standard error is called the t statistic (t) and its value informs us about statistical significance. This is illustrated by the p-value (P > |t|) - this is the probability that we would observe the value 6.6794 by chance, if the true value were really zero. This probability here is 0.000 - (this is not exactly zero, but the table doesn't include enough decimal places to show this) which means we can confident it is not zero. By convention, it is usual to conclude that we cannot be confident that the value of the coefficient is not zero if the p-value is greater than .05
 
     """)
 
