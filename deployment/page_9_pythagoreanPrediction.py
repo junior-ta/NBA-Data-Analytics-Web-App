@@ -97,6 +97,8 @@ if __name__ == '__main__':
     correlation of win percentage in second half of the season against itself, win percentage in the first half of the season,
     Pythagorean Expectation in the first half of the season, and Pythagorean Expectation in the second half of the season.
     Our focus is on comparing the second and third columns.
+    
+    We can see that Pythagorean expectation is just as good of a predictor as win%!
     """)
 
 
